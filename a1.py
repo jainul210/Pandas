@@ -12,5 +12,6 @@ data = {
     "Email" : ["bantihero@gmail.com", "sumit92329@yahoo.com", "robinhood@gmial.com"]
 }
 df = pd.DataFrame(data)
-
+a = df["Email"].str.split("@")
+print(a)
 print(df)
