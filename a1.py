@@ -24,4 +24,6 @@ data = {
 }
 df = pd.DataFrame(data)
 df["Age Group"] = df["Age"].apply(lambda x: "Adult" if x >= 18 else "Minor")
+df.sort_values(["Age", "attr"], inplace=True)
+df.reset_index(drop=True, inplace=True)
 print(df)
