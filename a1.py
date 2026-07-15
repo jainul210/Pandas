@@ -28,3 +28,15 @@ import numpy as np
 # df.reset_index(drop=True, inplace=True)
 # df["Rank"] = df["Age"].rank() 
 # print(df)
+
+data = {
+'Name': ['Alice', 'Bob', 'Charlie'],
+'Math': [85, 78, 92],
+'Science': [90, 82, 89],
+'English': [88, 85, 94]
+}
+df = pd.DataFrame(data)
+
+
+df = df.melt(id_vars=["Name"], value_vars=["Math", "Science", "English"], var_name="Subject", value_name="Score")
+print(df)
