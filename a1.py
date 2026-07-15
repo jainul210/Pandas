@@ -6,12 +6,22 @@ import numpy as np
 # a = df["A"]
 # print(a)
 
+# data = {
+#     "Name" : ["Banti", "Sumit", "Robin"],
+#     "attr" : [23, 25, 67],
+#     "Email" : ["bantihero@gmail.com", "sumit92329@yahoo.com", "robinhood@gmial.com"]
+# }
+# df = pd.DataFrame(data)
+# a = df["Email"].str.split("@")
+# print(a)
+# print(df)
+
 data = {
     "Name" : ["Banti", "Sumit", "Robin"],
+    "Age" : [26, 15, 87],
     "attr" : [23, 25, 67],
     "Email" : ["bantihero@gmail.com", "sumit92329@yahoo.com", "robinhood@gmial.com"]
 }
 df = pd.DataFrame(data)
-a = df["Email"].str.split("@")
-print(a)
+df["Age Group"] = df["Age"].apply(lambda x: "Adult" if x >= 18 else "Minor")
 print(df)
