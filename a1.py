@@ -41,20 +41,35 @@ import numpy as np
 # df = df.melt(id_vars=["Name"], value_vars=["Math", "Science", "English"], var_name="Subject", value_name="Score")
 # print(df)
 
-df = pd.DataFrame({
-"Department": ["HR", "HR", "IT", "IT", "Marketing", "Marketing", "Sales", "Sales"],
-"Team": ["A", "A", "B", "B", "C", "C", "D", "D"],
-"Gender": ["M", "F", "M", "F", "M", "F", "M", "F"],
-"Salary": [85, 90, 78, 85, 92, 88, 75, 80],
-"Age": [23, 25, 30, 22, 28, 26, 21, 27],
-"JoinDate": pd.to_datetime([
-"2020-01-10", "2020-02-15", "2021-03-20", "2021-04-10",
-"2020-05-30", "2020-06-25", "2021-07-15", "2021-08-01"
-])
+# df = pd.DataFrame({
+# "Department": ["HR", "HR", "IT", "IT", "Marketing", "Marketing", "Sales", "Sales"],
+# "Team": ["A", "A", "B", "B", "C", "C", "D", "D"],
+# "Gender": ["M", "F", "M", "F", "M", "F", "M", "F"],
+# "Salary": [85, 90, 78, 85, 92, 88, 75, 80],
+# "Age": [23, 25, 30, 22, 28, 26, 21, 27],
+# "JoinDate": pd.to_datetime([
+# "2020-01-10", "2020-02-15", "2021-03-20", "2021-04-10",
+# "2020-05-30", "2020-06-25", "2021-07-15", "2021-08-01"
+# ])
+# })
+# # df = df.groupby("Department")["Salary"].mean()
+# # df = df.groupby(["Team", "Gender"])["Salary"].mean()
+# # df = df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
+# df["Team Avg"] = df.groupby("Team")["Salary"].transform("mean")
+# df = df.groupby("Team").filter(lambda x: x["Salary"].mean() > 80)
+# print(df)
+
+employees = pd.DataFrame({
+"EmpID": [1, 2, 3],
+"Name": ["Alice", "Bob", "Charlie"],
+"DeptID": [10, 20, 30]
 })
-# df = df.groupby("Department")["Salary"].mean()
-# df = df.groupby(["Team", "Gender"])["Salary"].mean()
-# df = df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
-df["Team Avg"] = df.groupby("Team")["Salary"].transform("mean")
-df = df.groupby("Team").filter(lambda x: x["Salary"].mean() > 80)
+departments = pd.DataFrame({
+"DeptID": [10, 20, 40],
+"DeptName": ["HR", "Engineering", "Marketing"]
+})
+# df = pd.merge(employees, departments, on="DeptID")
+# df = pd.merge(employees, departments, on="DeptID", how="left")
+# df = pd.merge(employees, departments, on="DeptID", how="right")
+# df = pd.merge(employees, departments, on="DeptID", how="outer")
 print(df)
