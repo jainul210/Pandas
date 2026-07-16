@@ -54,5 +54,7 @@ df = pd.DataFrame({
 })
 # df = df.groupby("Department")["Salary"].mean()
 # df = df.groupby(["Team", "Gender"])["Salary"].mean()
-df = df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
+# df = df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
+df["Team Avg"] = df.groupby("Team")["Salary"].transform("mean")
+df = df.groupby("Team").filter(lambda x: x["Salary"].mean() > 80)
 print(df)
