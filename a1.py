@@ -52,5 +52,7 @@ df = pd.DataFrame({
 "2020-05-30", "2020-06-25", "2021-07-15", "2021-08-01"
 ])
 })
-df = df.groupby("Department")["Salary"].mean()
+# df = df.groupby("Department")["Salary"].mean()
+# df = df.groupby(["Team", "Gender"])["Salary"].mean()
+df = df.groupby("Team")["Salary"].agg(["mean", "max", "min"])
 print(df)
